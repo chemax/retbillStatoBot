@@ -26,7 +26,6 @@ class DataGrapper(prop: Properties) {
     fun get() {
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm")
         val formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd 00:00:00")
-//        val zone = ZoneOffset("")
 
         val startDate = ZonedDateTime.now().withZoneSameInstant(ZoneId.of("Asia/Tashkent")).format(formatter).toString()
         val summaryReport = SummaryReport(startDate)
@@ -35,7 +34,6 @@ class DataGrapper(prop: Properties) {
         transaction {
             val users = Users.selectAll()
                 .andWhere { Users.monitoring greater 0 }
-//                .let { User.wrapRow(it) }
                 .toList()
             users.forEach { user ->
                 val userWrapped = User.wrapRow(user)
@@ -45,7 +43,6 @@ class DataGrapper(prop: Properties) {
                 val trunks = userWrapped.trunks
                 trunks.forEach { trunk ->
                     val callList = Calls.selectAll()
-                        //starttime > NOW() - INTERVAL 1 HOUR
 //                        .andWhere { Calls.starttime greaterEq  "2021-04-25 00:00:00" }
 //                        .andWhere { Calls.starttime lessEq  "2021-04-25 23:59:59" }
                         .andWhere { Calls.starttime greater fromDate }

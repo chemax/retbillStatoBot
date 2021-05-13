@@ -5,7 +5,6 @@ import java.util.*
 
 
 fun main(args: Array<String>) {
-//    println(args.toString())
     val fis = FileInputStream("./config.properties")
     val prop = Properties()
     prop.load(fis)

@@ -38,7 +38,6 @@ class BotSender(private val prop: Properties) : TelegramLongPollingBot() {
         message.enableHtml(true)
         if (msg.isNullOrBlank()) return
         message.chatId = prop.getProperty("default_report_chat_id")
-//            report.user.contacts ?: prop.getProperty("default_report_chat_id")
         message.text = msg
         try {
             execute(message)

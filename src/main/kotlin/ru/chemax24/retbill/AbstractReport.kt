@@ -43,7 +43,6 @@ abstract class AbstractReport(private val datetime: String) {
             if (it.terminatestatus == "ANSWER") {
                 count++
             }
-//            println(ChronoUnit.MINUTES.between(it.starttime, currentDate))
             if (ChronoUnit.MINUTES.between(it.starttime, currentDate) <= HOUR) {
                 println(it.starttime.format(formatter).toString())
                 println(currentDate.format(formatter).toString())
@@ -75,7 +74,6 @@ abstract class AbstractReport(private val datetime: String) {
         df.timeZone = tz
         return df.format(Date(secondsTime * 1000L))
     }
-
 
     abstract fun message(): String
 
